@@ -1934,3 +1934,10 @@ button:focus {
     font-size: 16px;
   }
 }
+
+
+/* Extra  */
+
+#scanner_opt_text_4{
+  padding-right: 0 !important;
+}

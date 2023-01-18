@@ -1624,14 +1624,14 @@ div #NPS_INFO {
 .personal_learning table tr td {
   border: none;
   border-right: 1px solid #c1c0c0;
-  font-size: 20px;
-  vertical-align: top;
+  font-size: 16px;
+  vertical-align: middle;
 }
 
 @media (max-width: 767px) {
   .personal_learning table tr th,
   .personal_learning table tr td {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   #tredcode_heading{

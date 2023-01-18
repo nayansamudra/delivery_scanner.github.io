@@ -1,0 +1,1474 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Scanner Page</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+  <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="icon" href="img/tci_blue.png" sizes="32x32" />
+  <link rel="icon" href="img/tci_blue.png" sizes="192x192" />
+  <style>
+    @media screen and (min-width: 801px) {
+
+      #Data_Des,
+      .Highest_Delivery_Menu,
+      .Delivery_Spike_Menu,
+      #mobileleftpanel,
+      #Scanner_Left_Panel,
+      #Data_Left_Panel,
+      #Scanner_options,
+      /* #Calculator_options, */
+      /* .RiskCalculatorDiscription, */
+      /* #Risk_Cal_Body, */
+      /* #Risk_Cal_Des, */
+      /* #Cal_Left_Panel, */
+      /* #Calculator_options, */
+      #Data_options,
+      #CAGR_Cal_Des,
+      #SIP_Cal_Des,
+      #PIVOT_Cal_Des,
+      #EMI_Cal_Des,
+      #Income_Tax_Cal_Des,
+      #CAGR_Cal_Body,
+      #SIP_Cal_Body,
+      #PIVOT_Cal_Body,
+      #EMI_Cal_Body,
+      #Income_Tax_Cal_Body,
+      #FOForm,
+      #MobileRiskRadioButtonOption {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+
+      #LaptopRiskRadioButtonOption,
+      #Data_Des,
+      #SIP_Cal_Des,
+      #PIVOT_Cal_Des,
+      #EMI_Cal_Des,
+      #Income_Tax_Cal_Des,
+      .Highest_Delivery_Menu,
+      .Delivery_Spike_Menu,
+      .laptopleftpanel,
+      #Scanner_Left_Panel,
+      #Data_Left_Panel,
+      #Scanner_options,
+      /* #Calculator_options, */
+      /* .RiskCalculatorDiscription, */
+      /* #Risk_Cal_Body, */
+      /* #Risk_Cal_Des, */
+      /* #Cal_Left_Panel, */
+      #Calculator_options,
+      #Data_options,
+      #CAGR_Cal_Des,
+      #CAGR_Cal_Body,
+      #FOForm,
+      .top-advertisement,
+      .descriptionimage,
+      .card-text {
+        display: none;
+      }
+    }
+
+    .navbar-nav li {
+      position: relative;
+    }
+
+    .navbar-nav li a {
+      position: relative;
+      margin: 0 15px;
+      font-size: 16px;
+      line-height: 25px;
+      padding: 35px 0;
+      color: #000;
+      text-transform: capitalize;
+      font-weight: 500;
+      outline: none;
+      transition: .5s;
+    }
+
+    #navbar-nav-1 li a {
+      position: relative;
+      margin-top: 10px !important;
+      line-height: 25px;
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
+      font-weight: 500 !important;
+      font-size: 16px !important;
+    }
+
+    #navbar-nav-1 li {
+      /* height: 5rem; */
+      padding-top: 10px;
+    }
+
+    .menu-item-has-children:after {
+      position: absolute;
+      top: 7px;
+      right: -10px;
+      color: #263da5;
+      font-weight: bold;
+      font-family: "bootstrap-icons";
+      content: "\f282";
+      font-size: 16px;
+    }
+
+    .sub-menu-toggle {
+      display: none;
+    }
+
+    .sub-menu {
+      position: absolute;
+      left: 0;
+      top: 35px;
+      display: none;
+      list-style: none;
+      margin: 0;
+      background: #fff;
+      width: 180px;
+      padding: 0 0 10px 0;
+      border-top: 2px solid #324ed4;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .sub-menu li a {
+      font-size: 14px;
+      color: #324ed4;
+      padding: 10px 0;
+    }
+
+    .navbar-nav li:hover .sub-menu {
+      display: block;
+    }
+
+    .custom-logo-link img {
+      max-height: 60px !important;
+    }
+
+
+    @media(max-width: 1024px) {
+      .sub-menu {
+        position: relative;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    @media(max-width: 767px) {
+      .navbar-nav li a {
+        display: block;
+        margin-left: 0;
+        padding: 10px 0;
+      }
+
+      .sub-menu {
+        position: relative;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 1800px) and (max-width: 2000px) {
+      .navbar-nav li a {
+        font-size: 20px;
+      }
+
+      #footer-sidebar1 p {
+        width: 95% !important;
+      }
+
+      .widget-title {
+        font-size: 20px !important;
+      }
+
+    }
+  </style>
+</head>
+
+<body style="background-color: #e7e7e7; font-family: 'Outfit', sans-serif;">
+
+  <div class="position-relative p-0" id="laptop_header">
+    <nav id="site-navigation" class="navbar navbar-expand-lg navbar-dark bg-light px-4 px-lg-5 py-3 py-lg-0">
+      <div class="container my-2 py-2">
+        <div class="site-logo"><span class="custom-logo-link"><img width="72" height="77" src="img/tci_blue.png"
+              class="custom-logo" alt="" /></span></div>
+        <button class="navbar-toggler" type="button" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars" onclick="showhidetoggler()"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ms-auto py-0 pe-4">
+            <div class="menu-primary-container">
+              <ul id="menu-primary" class="navbar-nav ms-auto py-0 pe-4">
+                <li id="menu-item-10"
+                  class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-10">
+                  <a href="https://tradingcafeindia.com/" aria-current="page">Home</a>
+                </li>
+                <li id="menu-item-286" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-286"><a
+                    href="https://tradingcafeindia.com/about-us/">About
+                    Us</a></li>
+                <li id="menu-item-12"
+                  class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-12">
+                  <a href="https://tradingcafeindia.com/mentorship/" aria-current="page">Courses</a>
+                </li>
+                <li id="menu-item-285" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-285"><a
+                    href="https://tradingcafeindia.com/success-stories/">Success Stories</a></li>
+                <li id="menu-item-284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-284"><a
+                    href="https://tradingcafeindia.com/trading-cafe-india-blogs/">Blogs</a></li>
+                <li id="menu-item-1143"
+                  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1143">
+                  <a>Our Products</a><button class="sub-menu-toggle" aria-expanded="false"
+                    onClick="twentytwentyoneExpandSubMenu(this)"><span class="icon-plus"><svg class="svg-icon"
+                        width="18" height="18" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" fill="currentColor" />
+                      </svg></span><span class="icon-minus"><svg class="svg-icon" width="18" height="18"
+                        aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6 11h12v2H6z" fill="currentColor" />
+                      </svg></span><span class="screen-reader-text">Open menu</span></button>
+                  <ul class="sub-menu">
+                    <li id="menu-item-1138"
+                      class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1138">
+                      <a href="https://tredcode.tradingcafeindia.com/">Tredcode</a>
+                    </li>
+                    <li id="menu-item-1139"
+                      class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1139">
+                      <a href="https://tradingcafeindia.com/tci-brochure-curriculum/">Mentorship</a>
+                    </li>
+                    <li id="menu-item-1140"
+                      class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1140">
+                      <a href="https://students.tradingcafeindia.com/">Students Portal</a>
+                    </li>
+                    <li id="menu-item-1141"
+                      class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1141">
+                      <a href="https://scanner.tradingcafeindia.com/">Scanner</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+  </div>
+
+  <div class="position-relative p-0" id="mobile_header">
+    <nav id="site-navigation" class="navbar navbar-expand-lg navbar-light bg-light px-4 px-lg-5 py-3 py-lg-0">
+      <div class="container my-2 py-2">
+        <div class="site-logo"><span class="custom-logo-link"><img width="72" height="77" src="img/tci_blue.png"
+              class="custom-logo" alt="" /></span></div>
+        <button class="navbar-toggler" type="button" data-bs-target="#navbar_Collapse">
+          <span class="fa fa-bars" onclick="showhidetoggler()"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar_Collapse">
+          <div id="navbar-nav-1">
+            <ul style="list-style: none;">
+              <li><a href="https://tradingcafeindia.com/" aria-current="page"
+                  style=" color: #000; text-decoration: none;">Home</a></li>
+              <li><a href="https://tradingcafeindia.com/about-us/" style=" color: #000; text-decoration: none;">About
+                  Us</a></li>
+              <li><a href="https://tradingcafeindia.com/mentorship/" aria-current="page"
+                  style=" color: #000; text-decoration: none;">Courses</a>
+              </li>
+              <li><a href="https://tradingcafeindia.com/success-stories/"
+                  style=" color: #000; text-decoration: none;">Success Stories</a>
+              </li>
+              <li><a href="https://tradingcafeindia.com/trading-cafe-india-blogs/"
+                  style=" color: #000; text-decoration: none;">Blogs</a></li>
+              <li>
+                <div class="row pb-2">
+                  <div class="col"><a style=" color: #000; text-decoration: none;">Our
+                      Products</a></div>
+                  <div class="col d-flex justify-content-end" onclick="showhidetoggler_for_product()">
+                    <i class="bi bi-chevron-down"></i>
+                  </div>
+                </div>
+                <ul class="sub-menu" id="sub_menu_toggler">
+                  <li id="menu-item-1138"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1138">
+                    <a href="https://tredcode.tradingcafeindia.com/">Tredcode</a>
+                  </li>
+                  <li id="menu-item-1139"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1139">
+                    <a href="https://tradingcafeindia.com/tci-brochure-curriculum/">Mentorship</a>
+                  </li>
+                  <li id="menu-item-1140"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1140">
+                    <a href="https://students.tradingcafeindia.com/">Students Portal</a>
+                  </li>
+                  <li id="menu-item-1141"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1141">
+                    <a href="https://scanner.tradingcafeindia.com/">Scanner</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+  </div>
+
+  <div class="container" style="margin-top: 0px; margin-bottom: 50px;" id="mainbody">
+
+    <div class="row my-4 text-center boxshadow Cal_Des_1" id="Header_info_for_Laptop">
+      <div class="col" style="font-size: 14px;">
+        <div class="row py-1 text-center" style="font-weight:bold;">
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="header-headerINFO-1"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="header-headerINFO-2"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="header-headerINFO-3"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="header-headerINFO-4"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="header-headerINFO-5"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="header-headerINFO-6"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row py-1" style="font-weight: bold;">
+          <div class="col">
+            <div class="row">
+              <div class="col price-change price-change-1 p-0" style="text-align: right;"><span
+                  id="header_info_bar_1"></span></div>
+              <div class="col price-change price-change-7 p-0 mx-1" style="text-align: left;"><span
+                  id="header_info_bar_1a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change price-change-2 p-0" style="text-align: right;"><span
+                  id="header_info_bar_2"></span></div>
+              <div class="col price-change price-change-8 p-0 mx-1" style="text-align: left;"><span
+                  id="header_info_bar_2a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change price-change-3 p-0" style="text-align: right;"><span
+                  id="header_info_bar_3"></span></div>
+              <div class="col price-change price-change-9 p-0 mx-1" style="text-align: left;"><span
+                  id="header_info_bar_3a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change price-change-4 p-0" style="text-align: right;"><span
+                  id="header_info_bar_4"></span></div>
+              <div class="col price-change price-change-10 p-0 mx-1" style="text-align: left;"><span
+                  id="header_info_bar_4a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change price-change-5 p-0" style="text-align: right;"><span
+                  id="header_info_bar_5"></span></div>
+              <div class="col price-change price-change-11 p-0 mx-1" style="text-align: left;"><span
+                  id="header_info_bar_5a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change price-change-6 p-0" style="text-align: right;"><span
+                  id="header_info_bar_6"></span></div>
+              <div class="col price-change price-change-12 p-0 mx-1" style="text-align: left;"><span
+                  id="header_info_bar_6a"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-4 boxshadow Cal_Des" id="Header_info_for_Mobile" style="margin: 2px;">
+      <div class="col text-center" style="font-size: 12px;">
+        <div class="row py-1" style="font-weight:bold;">
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="Mobile_header-headerINFO-1"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="Mobile_header-headerINFO-2"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col"><span id="Mobile_header-headerINFO-3"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row py-1" style="font-weight: bold;">
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-1"><span id="Mobile_header_info_bar_1"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-2"><span id="Mobile_header_info_bar_2"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-3"><span id="Mobile_header_info_bar_3"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row py-1" style="font-weight: bold;">
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-7"><span id="Mobile_header_info_bar_1a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-8"><span id="Mobile_header_info_bar_2a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-9"><span id="Mobile_header_info_bar_3a"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4 py-1" style="font-weight:bold;">
+          <div class="col pt-2">
+            <div class="row">
+              <div class="col"><span id="Mobile_header-headerINFO-4"></span></div>
+            </div>
+          </div>
+          <div class="col pt-2">
+            <div class="row">
+              <div class="col"><span id="Mobile_header-headerINFO-5"></span></div>
+            </div>
+          </div>
+          <div class="col pt-2">
+            <div class="row">
+              <div class="col"><span id="Mobile_header-headerINFO-6"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row py-1" style="font-weight: bold;">
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-4"><span id="Mobile_header_info_bar_4"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-5"><span id="Mobile_header_info_bar_5"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-6"><span id="Mobile_header_info_bar_6"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row py-1" style="font-weight: bold;">
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-10"><span id="Mobile_header_info_bar_4a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-11"><span id="Mobile_header_info_bar_5a"></span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col price-change-12"><span id="Mobile_header_info_bar_6a"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="mainrow">
+      <div class="col-md-3" id="leftpanelmargin">
+        <div class="row boxshadow" style="border-radius: 10px; display: none !important;" id="Scanner_options">
+          <div class="col" id="Scanner_opt" style="border-top-left-radius: 5px;">
+            <div class="row d-flex justify-content-center align-items-center" style="padding: 5%;">
+              <div class="col-md-10 Scanner_opt_laptop mb-3 scanner_opt_text" onclick="showhighestdelivery()"
+                style=" cursor:pointer; margin-top: 12px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; height: 40px;background-color: #324ed4; color:white; padding-left:5%; padding-top: 3%;">
+                <span style="font-weight: bold;">Highest Delivery</span>
+              </div>
+              <div class="col-md-2 Scanner_opt_laptop mb-3 scanner_opt_radio" onclick="showhighestdelivery()"
+                style="cursor:pointer; margin-top: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 40px;background-color: #324ed4;color:white; padding-left:5%; padding-top: 2%">
+                <span style="font-size: 20px;" class="highest_delivery_radiobutton"> &#9673;</span>
+              </div>
+              <div class=" col-md-10 Scanner_opt_laptop mb-3 scanner_opt_text" onclick="showdeliveryspike()"
+                style=" cursor:pointer; margin-top: 12px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; height: 40px;background-color: #324ed4; color:white; padding-left:5%; padding-top: 3%;">
+                <span style="font-weight: bold;">Delivery Spike</span>
+              </div>
+              <div class="col-md-2 Scanner_opt_laptop mb-3 scanner_opt_radio" onclick="showdeliveryspike()"
+                style="cursor:pointer; margin-top: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 40px;background-color: #324ed4;color:white; padding-left:5%; padding-top: 2%">
+                <span style="font-size: 20px;" class="delivery_spike_radiobutton"> &#9673;</span>
+              </div>
+              <div class=" col-md-10 Scanner_opt_laptop mb-3 scanner_opt_text" onclick="showstrategy()"
+                style=" cursor:pointer; margin-top: 12px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; height: 40px;background-color: #324ed4; color:white; padding-left:5%; padding-top: 3%;">
+                <span style="font-weight: bold;">Strategy</span>
+              </div>
+              <div class="col-md-2 Scanner_opt_laptop mb-3 scanner_opt_radio" onclick="showstrategy()"
+                style="cursor:pointer; margin-top: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 40px;background-color: #324ed4;color:white; padding-left:5%; padding-top: 2%">
+                <span style="font-size: 20px;" class="strategy_radiobutton"> &#9673;</span>
+              </div>
+              <div class=" col-md-10 Scanner_opt_laptop mb-3 scanner_opt_text" onclick="showstudentportal()"
+                style=" cursor:pointer; margin-top: 12px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; height: 40px;background-color: #324ed4; color:white; padding-left:5%; padding-top: 3%;">
+                <span style="font-weight: bold;">Be a Pro Trader</span>
+              </div>
+              <div class="col-md-2 Scanner_opt_laptop mb-3 scanner_opt_radio" onclick="showstudentportal()"
+                style="cursor:pointer; margin-top: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 40px;background-color: #324ed4;color:white; padding-left:5%; padding-top: 2%">
+                <span style="font-size: 20px;" class="student_portal_radiobutton"> &#9673;</span>
+              </div>
+              <div class="row Scanner_opt_mobile">
+                <div
+                  class="col-10 d-flex align-items-center justify-content-center px-2 py-2 pt-2 text-center Scanner_opt_mobile mb-3"
+                  onclick="showhighestdelivery()"
+                  style="cursor:pointer; margin-top: 12px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; height: 40px;background-color: #324ed4; color:white; padding-left:5%; padding-top: 3%;">
+                  <span style="font-weight: bold;">Highest Delivery</span>
+                </div>
+                <div
+                  class="col-2 d-flex align-items-center justify-content-center px-2 py-2 pt-2 text-center Scanner_opt_mobile mb-3"
+                  onclick="showhighestdelivery()"
+                  style="cursor:pointer; margin-top: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 40px;background-color: #324ed4;color:white; padding-left:5%; padding-top: 3%;">
+                  <span style="font-size: 20px;" class="highest_delivery_radiobutton"> &#9673;</span>
+                </div>
+                <div
+                  class="col-10 d-flex align-items-center justify-content-center px-2 py-2 pt-2 text-center Scanner_opt_mobile mb-3"
+                  onclick="showdeliveryspike()"
+                  style="cursor:pointer; margin-top: 12px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; height: 40px;background-color: #324ed4; color:white; padding-left:5%; padding-top: 3%;">
+                  <span style="font-weight: bold;">Delivery Spike</span>
+                </div>
+                <div
+                  class="col-2 d-flex align-items-center justify-content-center px-2 py-2 pt-2 text-center Scanner_opt_mobile mb-3"
+                  onclick="showdeliveryspike()"
+                  style="cursor:pointer; margin-top: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 40px;background-color: #324ed4;color:white; padding-left:5%; padding-top: 3%;">
+                  <span style="font-size: 20px;" class="delivery_spike_radiobutton"> &#9673;</span>
+                </div>
+                <div
+                  class="col-10 d-flex align-items-center justify-content-center px-2 py-2 pt-2 text-center Scanner_opt_mobile mb-3"
+                  onclick="showstrategy()"
+                  style="cursor:pointer; margin-top: 12px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; height: 40px;background-color: #324ed4; color:white; padding-left:5%; padding-top: 3%;">
+                  <span style="font-weight: bold;">Strategy</span>
+                </div>
+                <div
+                  class="col-2 d-flex align-items-center justify-content-center px-2 py-2 pt-2 text-center Scanner_opt_mobile mb-3"
+                  onclick="showstrategy()"
+                  style="cursor:pointer; margin-top: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 40px;background-color: #324ed4;color:white; padding-left:5%; padding-top: 3%;">
+                  <span style="font-size: 20px;" class="strategy_radiobutton"> &#9673;</span>
+                </div>
+                <div
+                  class="col-10 d-flex align-items-center justify-content-center px-2 py-2 pt-2 text-center Scanner_opt_mobile mb-3"
+                  onclick="showstudentportal()"
+                  style="cursor:pointer; margin-top: 12px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; height: 40px;background-color: #324ed4; color:white; padding-left:5%; padding-top: 3%;">
+                  <span style="font-weight: bold;">Be a Pro Trader</span>
+                </div>
+                <div
+                  class="col-2 d-flex align-items-center justify-content-center px-2 py-2 pt-2 text-center Scanner_opt_mobile mb-3"
+                  onclick="showstudentportal()"
+                  style="cursor:pointer; margin-top: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 40px;background-color: #324ed4;color:white; padding-left:5%; padding-top: 3%;">
+                  <span style="font-size: 20px;" class="student_portal_radiobutton"> &#9673;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 Right_Panel">
+        <div class="row boxshadow Highest_Delivery_Menu">
+          <div class="col">
+            <div class="row px-2 py-2" id="HDIntroLaptopView">
+              <div class="col">
+                <div class="row">
+                  <div class="col-md-2 descriptionimage" style="margin: auto;"><img src="img/HIGHEST_DELIVERY.png"
+                      class="img-fluid rounded-start">
+                  </div>
+                  <div class="col-md-10">
+                    <div class="row px-2 py-2">
+                      <div class="col">
+                        <span style="font-weight:bolder; font-size: 30px;">Highest
+                          Delivery</span>
+                      </div>
+                      <div class="col-md-3 text-center">
+                        <input id="HDLaptop" class="form-check-input me-1" onclick="showhighestdeliveryfando()"
+                          name="highest_delivery_radio_button" type="radio" value="2" aria-label="..." checked>
+                        <b style="font-size: 25px;">F & O</b>
+                      </div>
+                      <div class="col-md-3 text-center"><input class="form-check-input me-1"
+                          onclick="showhighestdeliverynifty()" name="highest_delivery_radio_button" type="radio"
+                          value="1" aria-label="...">
+                        <b style="font-size: 25px;">Nifty500</b>
+                      </div>
+                    </div>
+                    <div class="row px-2 py-2">
+                      <div class="col">
+                        <h6 style="color:#888888">Stocks which has the highest delivery
+                          compared
+                          to its last 20
+                          trading sessions</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row px-2 py-2" id="HDIntroMobileView">
+              <div class="col">
+                <div class="row py-2">
+                  <div class="col d-flex justify-content-center">
+                    <h1>Highest Delivery</h1>
+                  </div>
+                </div>
+                <div class="row py-2">
+                  <div class="col-6 text-center">
+                    <input id="HDMobile" class="form-check-input me-1" onclick="showhighestdeliveryfando()"
+                      name="highest_delivery_radio_button_mobileview" type="radio" value="2" aria-label="..." checked>
+                    <b style="font-size: 20px;">F & O</b>
+                  </div>
+                  <div class="col-6 text-center"><input class="form-check-input me-1"
+                      onclick="showhighestdeliverynifty()" name="highest_delivery_radio_button_mobileview" type="radio"
+                      value="1" aria-label="...">
+                    <b style="font-size: 20px;">Nifty500</b>
+                  </div>
+                </div>
+                <div class="row pl-3 py-2">
+                  <div class="col text-center">
+                    <h6 style="color:#888888">Stocks which has the highest delivery compared to
+                      its
+                      last 20
+                      trading sessions</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row px-2 pb-3 HDDatatables">
+              <table id="highestdeliverynifty500">
+                <thead>
+                  <tr>
+                    <th style="text-align: left;">Name</th>
+                    <th style="text-align: left;">LTP</th>
+                    <th style="text-align: left;">Volume</th>
+                    <th style="text-align: left;">Avg. Del %</th>
+                    <th style="text-align: left;">Delivery (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="HDdataniftyonly">
+                </tbody>
+              </table>
+              <table id="highestdeliveryfando">
+                <thead>
+                  <tr>
+                    <th style="text-align: left;">Name</th>
+                    <th style="text-align: left;">LTP</th>
+                    <th style="text-align: left;">Volume</th>
+                    <th style="text-align: left;">Avg. Del %</th>
+                    <th style="text-align: left;">Delivery (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="HDdatafandoonly">
+                </tbody>
+              </table>
+              <div class="row d-flex justify-content-end Date" style="margin-right:5px;" id="HDfandotimestamp"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row boxshadow Delivery_Spike_Menu" style="display: none">
+          <div class="col">
+            <div class="row px-2 py-2" id="DSIntroLaptopView">
+              <div class="col">
+                <div class="row">
+                  <div class="col-md-2 descriptionimage" style="margin: auto;"><img src="img/Delivery_spike.png"
+                      class="img-fluid rounded-start">
+                  </div>
+                  <div class="col-md-10">
+                    <div class="row px-2 py-2">
+                      <div class="col">
+                        <span style="font-weight:bolder; font-size: 30px;">Delivery
+                          Spike</span>
+                      </div>
+                      <div class="col-md-3 text-center">
+                        <input id="DSLaptop" class="form-check-input me-1" onclick="showdeliveryspikefando()"
+                          name="Delivery_spike_radio_button" type="radio" value="2" aria-label="..." checked>
+                        <b style="font-size: 25px;">F & O</b>
+                      </div>
+                      <div class="col-md-3 text-center"><input class="form-check-input me-1"
+                          onclick="showdeliveryspikenifty()" name="Delivery_spike_radio_button" type="radio" value="1"
+                          aria-label="...">
+                        <b style="font-size: 25px;">Nifty500</b>
+                      </div>
+                    </div>
+                    <div class="row px-2 py-2">
+                      <div class="col">
+                        <h6 style="color:#888888">Stocks which has the highest delivery
+                          compared
+                          to yesterday</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row px-2 py-2" id="DSIntroMobileView">
+              <div class="col">
+                <div class="row py-2">
+                  <div class="col d-flex justify-content-center">
+                    <h1>Delivery Spike</h1>
+                  </div>
+                </div>
+                <div class="row py-2">
+                  <div class="col-6 text-center">
+                    <input id="DSLaptop" class="form-check-input me-1" onclick="showdeliveryspikefando()"
+                      name="delivery_spike_radio_button_mobileview" type="radio" value="2" aria-label="..." checked>
+                    <b style="font-size: 20px;">F & O</b>
+                  </div>
+                  <div class="col-6 text-center"><input class="form-check-input me-1" onclick="showdeliveryspikenifty()"
+                      name="delivery_spike_radio_button_mobileview" type="radio" value="1" aria-label="...">
+                    <b style="font-size: 20px;">Nifty500</b>
+                  </div>
+                </div>
+                <div class="row px-2 py-2">
+                  <div class="col text-center">
+                    <h6 style="color:#888888">Stocks which has the highest delivery compared
+                      to yesterday</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row px-2 pb-3" id="DSDatatables">
+              <table id="deliveryspikenifty500">
+                <thead>
+                  <tr>
+                    <th style="text-align: left;">Name</th>
+                    <th style="text-align: left;">LTP</th>
+                    <th style="text-align: left;">Avg. Del %</th>
+                    <th style="text-align: left;">Delivery (%)</th>
+                    <th style="text-align: left;">Increase in Delivery (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="DSdataniftyonly">
+                </tbody>
+              </table>
+              <table id="deliveryspikefando">
+                <thead>
+                  <tr>
+                    <th style="text-align: left;">Name</th>
+                    <th style="text-align: left;">LTP</th>
+                    <th style="text-align: left;">Avg. Del %</th>
+                    <th style="text-align: left;">Delivery (%)</th>
+                    <th style="text-align: left;">Increase in Delivery (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="DSdatafandoonly">
+                </tbody>
+              </table>
+              <div class="row d-flex justify-content-end Date" id="DeliverySpikeTimestamp" style="margin-right:5px;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row boxshadow Strategy_Menu embed-container py-3" style="display: none">
+          <div class='embed-container'>
+            <iframe
+              src='https://player.vimeo.com/video/789982264?h=558af5ba85&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'
+              frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          </div>
+        </div>
+        <div class="row boxshadow Student_Portal_Menu py-3" style="display: none">
+          <div class="col-12">
+            <div class="row mt-2 mb-5" style="font-weight: bolder; font-size: x-large;" id="tredcode_heading">
+              <div class="col" style="text-align: center; padding-left: 15px;padding-right: 15px;">
+                Unlock the secrets of successful trading with our comprehensive online course. Learn from industry
+                experts,
+                gain valuable insights and strategies, and start your journey to financial freedom today.
+              </div>
+            </div>
+            <div class="row mt-5 pt-3" style="font-weight: bolder;font-size: larger;">
+              <div class="col" style="text-align: center; padding-left: 15px;padding-right: 15px;">
+                Join TCI mentorship program:
+              </div>
+            </div>
+            <div class="row my-4 pt-5" style="font-weight: bolder; font-size: large;">
+              <div class="col" style="text-align: center; padding-left: 15px;padding-right: 15px;">
+                Why TCI ?
+              </div>
+            </div>
+            <div class="row justify-content-center" id="why_tci_table">
+              <div class="col-lg-7 col-sm-7">
+                <div class="personal_learning" style="text-align: center;">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>Features</th>
+                        <th>Trading Cafe India</th>
+                        <th>Other</th>
+                      </tr>
+                      <tr>
+                        <td>Live Market sessions</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                      <tr>
+                        <td>Live doubt Clearing sessions</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                      <tr>
+                        <td>Master tool - Tredcode</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                      <tr>
+                        <td>Hindi/English sessions</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                      <tr>
+                        <td>Students Portal</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                      <tr>
+                        <td>Dedicated support Portal</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                      <tr>
+                        <td>Trader's Community to share ideas</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                      <tr>
+                        <td>Job Placement cell</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                      <tr>
+                        <td>NISM exam preparation</td>
+                        <td><img src="img/Tick-new.svg"></td>
+                        <td><img src="img/Cross-new.svg"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="row my-4 pt-5 mt-5" style="font-weight: bolder; font-size: large;">
+              <div class="col" style="text-align: center; padding-left: 15px;padding-right: 15px;">
+                TCI course content
+              </div>
+            </div>
+            <div class="accordion accordion-flush m-accordion" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading1">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+                    Foundation Module </button>
+                </h2>
+                <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1"
+                  data-bs-parent="#accordionFlushExample">
+
+                  <div class="accordion-body">
+                    <h2>Foundation Module:</h2>
+                    <ul>
+                      <li>How to make your money work for you more efficiently (Market Secrets)
+                      </li>
+                      <li>Basic of Technical analysis:What is stock market &amp; how it works ?
+                        <ul>
+                          <li>Candlestick patterns and its uses</li>
+                          <li>Psychology of chart patterns</li>
+                          <li>Indicators and when to use which</li>
+                        </ul>
+                      </li>
+                      <li>Best technique to find market trends.</li>
+                      <li>How to differentiate between Genuine growth stocks and manipulated
+                        stocks</li>
+                      <li>When does Price follow the news ? When to follow the news and when to
+                        follow Price action ?</li>
+                      <li>How to find out the extraordinary moves before the news is out?</li>
+                      <li>How to think and visualize the market like Pro traders</li>
+                      <li>Price action secrets that no one will tell you</li>
+                      <li>How Pro traders trades and why they make consistent returns</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading2">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapse2" aria-expanded="true" aria-controls="flush-collapse2">
+                    Pro Module </button>
+                </h2>
+                <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2"
+                  data-bs-parent="#accordionFlushExample">
+
+                  <div class="accordion-body">
+                    <h2>Pro Module :</h2>
+                    <ul>
+                      <li>How supply-demand creates an opportunity for us.</li>
+                      <li>How to trade with the flow, but when markets are roaring and sell on
+                        markets are bleeding.</li>
+                      <li>Pro-tip on Money Management to trade and invest with limited capital
+                      </li>
+                      <li>How to filter setups to avoid false setups and increase trading accuracy
+                      </li>
+                      <li>Trading &amp; Investing Psychology
+                        <ul>
+                          <li><strong>How market works in general so that 90% of people loss
+                              money</strong></li>
+                        </ul>
+                        <ul>
+                          <li><strong>How to break that chain and become profitable</strong>
+                          </li>
+                        </ul>
+                        <ul>
+                          <li><strong>The trading mindset of Pro traders</strong></li>
+                        </ul>
+                      </li>
+                      <li><strong>Tredcode – A master tool to find institutional moves:</strong>
+                        <ul>
+                          <li>Pre-market Opportunity using Tredcode for office goers.</li>
+                        </ul>
+                        <ul>
+                          <li>&nbsp;Intraday boost and High-power stocks for intraday</li>
+                        </ul>
+                        <ul>
+                          <li>Momentum spike for intraday trading for office goers.</li>
+                        </ul>
+                        <ul>
+                          <li>Top-level &amp; Low-level stocks for intraday trading for office
+                            goers.</li>
+                        </ul>
+                        <ul>
+                          <li>Smart money flow using Sectoral flow analysis</li>
+                        </ul>
+                        <ul>
+                          <li>Multi resistance and support breakout for Breakout trading</li>
+                        </ul>
+                        <ul>
+                          <li>Upside &amp; Downside LOM for reversal traders</li>
+                        </ul>
+                        <ul>
+                          <li>Daily Contraction setups for Swing opportunities</li>
+                        </ul>
+                        <ul>
+                          <li>The broader market trend through Swing Dashboard</li>
+                        </ul>
+                        <ul>
+                          <li>Tracking Nifty &amp; BankNifty momentum using OI compass</li>
+                        </ul>
+                        <ul>
+                          <li>Tracking positions of big players in Index</li>
+                        </ul>
+                      </li>
+                      <li><strong>Best Proven System / Methodology</strong> – a Step-by-Step Guide
+                        to making Buy/sell decisions.
+                        <ul>
+                          <li>Intraday smart money-flow strategy</li>
+                        </ul>
+                        <ul>
+                          <li>Reversal TRADING using LOM</li>
+                        </ul>
+                        <ul>
+                          <li>Momentum Spike Intraday</li>
+                        </ul>
+                        <ul>
+                          <li>Top Level/Low-level strategy</li>
+                        </ul>
+                        <ul>
+                          <li>MBO Swing Trading strategy</li>
+                          <li>Pre-Market Strategy</li>
+                        </ul>
+                      </li>
+                      <li>When to use which strategy for the best results</li>
+                      <li>Updated <strong>Entry / Exit/set targets and proper stop losses</strong>
+                        in volatile Market parameters to maximize return</li>
+                      <li>Execution / Live examples / Doubts clearing /additional tips through
+                        Live sessions</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapse3" aria-expanded="true" aria-controls="flush-collapse3">
+                    Practical </button>
+                </h2>
+                <div id="flush-collapse3" class="accordion-collapse collapse" aria-labelledby="flush-heading3"
+                  data-bs-parent="#accordionFlushExample">
+
+                  <div class="accordion-body">
+                    <h2>Pro Module:</h2>
+                    <ul>
+                      <li>Live Doubt clearing discussion in the evening (weekly 3 sessions, 2
+                        hours each)</li>
+                      <li>Weekly 2 live market sessions where we will discuss Market overview:
+                        Markets structure and plan ahead. Nifty / Bank Nifty analysis and
+                        important levels.&nbsp; How should an investor/trader approach that
+                        market?</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-5 pt-5" style="font-weight: bolder; font-size: large;">
+              <div class="col" style="text-align: center; padding-left: 15px;padding-right: 15px;">
+                Master Tool - TREDCODE
+              </div>
+            </div>
+            <div class="container-xxl" id="About_Tredcode">
+              <div class="mb-5 mt-3 heading text-center">
+                <span style="font-weight: bold;font-size:16px">Everything you need</span>
+              </div>
+              <div class="my-5 row">
+                <div class="col-lg-6">
+                  <img src="./img/Screenshot_30.png" width="100%" height="100%"
+                    style="border-radius: 10px; box-shadow: 0 0 5px 5px rgb(218, 218, 218);" />
+                </div>
+                <div class="col-lg-6">
+                  <div class="ms-5 img_description_bold text-left" style="color:#5271ff">
+                    <span style="font-weight: bold">Money Flux</span>
+                  </div>
+                  <div class="my-3 ms-5 img_description text-left">
+                    <span style="font-weight: normal">See How Big Players Are Building Positions In Index. Best Tool To
+                      Have For Option Buying In Markets. With Money Flux You Will Get Candle By Candle Position Update
+                      Of All Market Participants. Money Flux Checks, Oi, Price Movement Of All Strikes, Bid-ask Ratio
+                      And Gives You A Clear Picture Of What Is Happening Behind The Candle. This Will Increase Your
+                      Trading Accuracy Significantly.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="my-5 row" id="second_row">
+                <div class="col-lg-6">
+                  <div class="me-5 img_description_bold text-left" style="color:#5271ff">
+                    <span style="font-weight: bold">Index Analysis</span>
+                  </div>
+                  <div class="my-3 me-5 img_description text-left">
+                    <span style="font-weight: normal">Now See Whether Institutions Are Building Bullish Or Bearish
+                      Positions In The Market And Analyze With The Custom Time Range Selector. If You Are Planning To
+                      Buy A Breakout But Not Sure Whether That Breakout Will Sustain Or Not, Then Index Analyzer Is For
+                      You. It Will Show You The Net Position Built In Index And Gives You Information About Who Is In
+                      Control, Are They Bulls Or Bears.
+                    </span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <img src="./img/Screenshot_29.png" width="100%" height="100%"
+                    style="border-radius: 10px;box-shadow: 0 0 5px 5px rgb(218, 218, 218);" />
+                </div>
+              </div>
+              <div class="my-5 row">
+                <div class="col-lg-6">
+                  <img src="./img/Screenshot_28.png" width="100%" height="100%"
+                    style="border-radius: 10px;box-shadow: 0 0 5px 5px rgb(218, 218, 218);" />
+                </div>
+                <div class="col-lg-6">
+                  <div class="ms-5 img_description_bold text-left" style="color:#5271ff">
+                    <span style="font-weight: bold">Swing Centre</span>
+                  </div>
+                  <div class="my-3 ms-5 img_description text-left">
+                    <span style="font-weight: normal">It Provides The Best Stocks Available To Add In Your Swing
+                      Baskets, & Gives Clear Idea About Current Money Flow Across The Different Market Segment. Stocks
+                      Which Are Breaking Important Support And Resistance Will Momentum Will Be Filtered Here. A Must
+                      Have Tool If You Are Doing Swing Trading And Short-term Investing.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="my-5 row" id="fourth_row">
+                <div class="col-lg-6">
+                  <div class="me-5 img_description_bold text-left" style="color:#5271ff">
+                    <span style="font-weight: bold">Pro Setups</span>
+                  </div>
+                  <div class="my-3 me-5 img_description text-left">
+                    <span style="font-weight: normal">Here Active Day Traders Will Find Most Suitable Trade Setups As
+                      Per Their Style Of Trading. Pro Setup Gives Variety Of Trades Starts From Highest Reversal Trade
+                      Opportunities, Momentum Trading, Loss Of Momentum Trading , Multiple Support/ Resistance Breakout
+                      And Much More Pro Setups To Trade In Intraday.
+                    </span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <img src="./img/Screenshot_31.png" width="100%" height="100%"
+                    style="border-radius: 10px;box-shadow: 0 0 5px 5px rgb(218, 218, 218);" />
+                </div>
+              </div>
+            </div>
+            <div class="container-xxl" id="About_Tredcode_Mobile_View">
+              <div class="mt-3 heading text-center">
+                <span style="font-weight: bold;font-size:16px">Everything you need</span>
+              </div>
+              <div class="mb-5 mt-3 row">
+                <div class="col-lg-6">
+                  <img src="./img/Screenshot_30.png" width="100%" height="100%"
+                    style="border-radius: 10px; box-shadow: 0 0 5px 5px rgb(218, 218, 218);" />
+                </div>
+                <div class="col-lg-6">
+                  <div class="ms-5 img_description_bold text-left" style="color:#5271ff">
+                    <span style="font-weight: bold">Money Flux</span>
+                  </div>
+                  <div class="ms-5 img_description text-left">
+                    <span style="font-weight: normal">See How Big Players Are Building Positions In Index. Best Tool To
+                      Have For Option Buying In Markets. With Money Flux You Will Get Candle By Candle Position Update
+                      Of All Market Participants. Money Flux Checks, Oi, Price Movement Of All Strikes, Bid-ask Ratio
+                      And Gives You A Clear Picture Of What Is Happening Behind The Candle. This Will Increase Your
+                      Trading Accuracy Significantly.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="my-5 row" id="second_row">
+                <div class="col-lg-6">
+                  <img src="./img/Screenshot_29.png" width="100%" height="100%"
+                    style="border-radius: 10px;box-shadow: 0 0 5px 5px rgb(218, 218, 218);" />
+                </div>
+                <div class="col-lg-6">
+                  <div class="me-5 img_description_bold text-left" style="color:#5271ff">
+                    <span style="font-weight: bold">Index Analysis</span>
+                  </div>
+                  <div class="ms-5 img_description text-left">
+                    <span style="font-weight: normal">Now See Whether Institutions Are Building Bullish Or Bearish
+                      Positions In The Market And Analyze With The Custom Time Range Selector. If You Are Planning To
+                      Buy A Breakout But Not Sure Whether That Breakout Will Sustain Or Not, Then Index Analyzer Is For
+                      You. It Will Show You The Net Position Built In Index And Gives You Information About Who Is In
+                      Control, Are They Bulls Or Bears.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="my-5 row">
+                <div class="col-lg-6">
+                  <img src="./img/Screenshot_28.png" width="100%" height="100%"
+                    style="border-radius: 10px;box-shadow: 0 0 5px 5px rgb(218, 218, 218);" />
+                </div>
+                <div class="col-lg-6">
+                  <div class="ms-5 img_description_bold text-left" style="color:#5271ff">
+                    <span style="font-weight: bold">Swing Centre</span>
+                  </div>
+                  <div class="ms-5 img_description text-left">
+                    <span style="font-weight: normal">It Provides The Best Stocks Available To Add In Your Swing
+                      Baskets, & Gives Clear Idea About Current Money Flow Across The Different Market Segment. Stocks
+                      Which Are Breaking Important Support And Resistance Will Momentum Will Be Filtered Here. A Must
+                      Have Tool If You Are Doing Swing Trading And Short-term Investing.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="my-5 row" id="second_row">
+                <div class="col-lg-6">
+                  <img src="./img/Screenshot_31.png" width="100%" height="100%"
+                    style="border-radius: 10px;box-shadow: 0 0 5px 5px rgb(218, 218, 218);" />
+                </div>
+                <div class="col-lg-6">
+                  <div class="me-5 img_description_bold text-left" style="color:#5271ff">
+                    <span style="font-weight: bold">Pro Setups</span>
+                  </div>
+                  <div class="ms-5 img_description text-left">
+                    <span style="font-weight: normal">Here Active Day Traders Will Find Most Suitable Trade Setups As
+                      Per Their Style Of Trading. Pro Setup Gives Variety Of Trades Starts From Highest Reversal Trade
+                      Opportunities, Momentum Trading, Loss Of Momentum Trading , Multiple Support/ Resistance Breakout
+                      And Much More Pro Setups To Trade In Intraday.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-5 pt-5 mb-2" style="font-weight: bolder; font-size: large;">
+              <div class="col" style="text-align: center; padding-left: 15px;padding-right: 15px;">
+                If interested ... contact us....
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row boxshadow Cal_Body" id="DeliveryScannerDiscription">
+          <div class="col">
+            <div class="row mt-3" style="font-weight: bolder;font-size: x-large;">
+              <div class="col" style="text-align: justify; padding-left: 15px;padding-right: 15px;">
+                Highest Delivery & Delivery Spike scanner
+              </div>
+            </div>
+            <div class="row mt-2" style="font-size: large;">
+              <div class="col" style="text-align: justify; padding-left: 15px;padding-right: 15px;">
+                Most analysts give importance to volume or traded quantity. However, not all traders
+                or
+                investors participated on that day took shares in their demat account. As a trader I
+                give more importance to Deliverable Quantity/Delivery Percentage.<br>
+                For example, the total traded quantity of a Stock A is 1000. Assuming out of 1000,
+                deliverable quantity is 600. It means balance 400 shares were traded intraday and
+                only
+                600 shares are marked for delivery. The delivery percentage of 60% is vital in this
+                example.<br><br>
+                <b>"Highest Delivery"</b> scanners shows stocks which have seen the highest delivery in
+                their
+                share compared to last 20 days, This shows big players are not only trading but
+                taking
+                these shares home.<br><br>
+                <b>"Delivery Spike"</b> scanners shows stocks which have seen a sudden increase in their
+                delivery percentage compared to yesterday. This usually happens when there is some
+                news
+                related to that stock.<br>
+              </div>
+            </div>
+            <div class="row mt-3" style="font-weight: bolder;font-size: x-large;">
+              <div class="col" style="text-align: justify; padding-left: 15px;padding-right: 15px;">
+                How to use this scanner for short term trading ?
+              </div>
+            </div>
+            <div class="row mt-2" style="font-size: large;">
+              <div class="col" style="text-align: justify; padding-left: 15px;padding-right: 15px;">
+                There is a strong co-relation between Delivery Percentage and the Stock Price. Let's
+                see
+                all possible scenarios:<br><br>
+                <b>(1) Increase in Delivery Percentage and stock price goes up:</b><br><br>
+                It shows BULLISH Trend in the stock. As I mentioned, it means Traders/Investors are
+                accepting delivery of stock i.e. buying for a long term. In this scenario, there is
+                a
+                possibility of further increase in stock price.<br><br>
+                <b>(2) Increase in Delivery Percentage and stock price goes down:</b><br><br>
+                The increase in Delivery Percentage with a fall in Stock Price means investors are
+                offloading or exiting their long positions. It is not a good sign for the stock and
+                the
+                stock price may go down further. It's a sign of Bearish Trend and Traders/Investors
+                should exit the stock.<br><br>
+                <b>(3) Decrease in Delivery Percentage and stock price goes up:</b><br><br>
+                Here decrease in delivery percentage implies very high intraday activity. Though the
+                price is going up, traders are not confident to hold it for short term. Such a trend
+                is
+                normally short-lived.<br><br>
+                <b>(4) Decrease in Delivery Percentage and stock price goes down:</b><br><br>
+                A decrease in Delivery % and fall in Stock price means there is a possibility of
+                trend
+                reversal very shortly. We can assume traders are offloading their positions. They
+                are
+                anticipating the reversal in stock price trend.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row boxshadow Cal_Body" id="StrategyDiscription">
+          <div class="col">
+            <div class="row mt-3" style="font-weight: bolder;font-size: x-large;">
+              <div class="col" style="text-align: justify; padding-left: 15px;padding-right: 15px;">
+                Strategy Description
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row boxshadow Cal_Body" id="StudentPortalDiscription">
+          <div class="col">
+            <div class="row mt-3" style="font-weight: bolder;font-size: medium;">
+              <div class="col" style="text-align: justify; padding-left: 15px;padding-right: 15px;">
+                Be a Pro Trader Description
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- Footer Start -->
+  <div class="container-fluid justify-content-center" style="margin-top:150px; background-color: #081452; color:white">
+    <div class="container-fluid text-light footer wow fadeIn" data-wow-delay="0.1s">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-4 col-md-6">
+            <div id="footer-sidebar1">
+              <div class="row d-flex align-items-center">
+                <div class="col-5">
+                  <aside id="block-12" class="widget widget_block widget_media_image">
+                    <figure class="wp-block-image size-full"><img loading="lazy" width="73" height="78"
+                        src="img/tci_logo_white.png" alt="" class="wp-image-988" />
+                    </figure>
+                  </aside>
+                </div>
+                <div class="col-2">
+                  <aside id="block-11" class="widget widget_block">
+                    <p><a href="https://www.tradingcafeindia.in/pay" class="pay-now" target="_blank">Pay
+                        Now</a>
+                    </p>
+                  </aside>
+                </div>
+              </div>
+              <aside id="block-8" class="widget widget_block widget_text">
+                <p>By connecting students all over the world to the best instructors, we helping
+                  individuals
+                  reach their goals and pursue their dreams. </p>
+              </aside>
+            </div>
+            <div class="d-flex">
+              <div id="footer-sidebar2">
+                <aside id="block-9" class="widget widget_block">
+                  <p>
+                    <a href="https://www.facebook.com/TradingCafeIndia/"
+                      class=" btn btn-outline-light btn-social fab fa-facebook-f"></a>
+                    <a href="https://www.instagram.com/tradingcafeindia/?hl=en"
+                      class=" btn btn-outline-light btn-social fab fa-instagram"></a>
+                    <a href="https://t.me/tradingcafeindia"
+                      class=" btn btn-outline-light btn-social fab fa-telegram"></a>
+                  </p>
+                </aside>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 col-md-6">
+            <div class="row">
+              <div class="col-lg-4 col-md-6">
+                <div id="footer-sidebar3">
+                  <aside id="nav_menu-2" class="widget widget_nav_menu">
+                    <h4 class="widget-title">Quick Links</h4>
+                    <nav class="menu-quick-links-container" aria-label="Quick Links">
+                      <ul id="menu-quick-links" class="menu">
+                        <li id="menu-item-291"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-291">
+                          <a href="https://tradingcafeindia.com/about-us/">About
+                            Us</a>
+                        </li>
+                        <li id="menu-item-292"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-292">
+                          <a href="https://tradingcafeindia.com/success-stories/">Success
+                            Stories</a>
+                        </li>
+                        <li id="menu-item-290"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-290">
+                          <a href="https://tradingcafeindia.com/career/">Career</a>
+                        </li>
+                        <li id="menu-item-993"
+                          class="menu-item menu-item-type-custom menu-item-object-custom menu-item-993">
+                          <a href="https://tcistudents.com/">Students Portal</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </aside>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div id="footer-sidebar4">
+                  <aside id="nav_menu-3" class="widget widget_nav_menu">
+                    <h4 class="widget-title">More</h4>
+                    <nav class="menu-more-container" aria-label="More">
+                      <ul id="menu-more" class="menu">
+                        <li id="menu-item-516"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-516">
+                          <a href="https://tradingcafeindia.com/terms-of-use-trading-cafe-india-tci/">Terms
+                            Of Use</a>
+                        </li>
+                        <li id="menu-item-517"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-517">
+                          <a href="https://tradingcafeindia.com/privacy-policy-trading-cafe-i/">Privacy
+                            Policy</a>
+                        </li>
+                        <li id="menu-item-522"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-522">
+                          <a
+                            href="https://tradingcafeindia.com/fulfilment-policy-tci-tradiing-cafe-india-share-market-clas/">Fulfilment
+                            Policy</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </aside>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <h4 class="widget-title">Contact</h4>
+                <div id="footer-sidebar5">
+                  <aside id="block-10" class="widget widget_block">
+                    <p class="mb-2">A-35, udhognagar, Jamnagar<br> 361006 - Gujarat</p>
+                    <p class="mb-2"><a href="mailto:support@tradingcafeindia.com">support@tradingcafeindia.com</a>
+                    </p>
+                  </aside>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <div class="row">
+            <div class="col-md-12 text-center mb-3 mb-md-0">
+              Copyright © 2023 All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+      <i class="bi bi-arrow-up"></i>
+    </a>
+  </div>
+  <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <script src="js/scanner.js"></script>
+  <script src="js/calculator.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXEJS4E6B0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-JXEJS4E6B0');
+  </script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
